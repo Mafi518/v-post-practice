@@ -1,30 +1,43 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <v-post-form @create="createPost"></v-post-form>
+  <v-post-list :posts="posts"></v-post-list>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+import vPostForm from "@/components/v-post-form"
+import vPostList from "@/components/v-post-list"
+
+export default {
+  components: {
+    vPostList,
+    vPostForm
+  },
+  data() {
+    return {
+      posts: [
+        { id: 1, title: "Javascript", body: "description post" },
+        { id: 2, title: "Javascript 2", body: "description post 2" },
+        { id: 3, title: "Javascript 3", body: "description post 3" },
+      ],
+    };
+  },
+  methods: {
+    createPost(post) {
+      this.posts.push(post)
+    },
+  },
+};
+</script>
+
+<style lang="css">
+* {
+  margin: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  padding: 20px;
 }
 
-#nav {
-  padding: 30px;
-}
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
