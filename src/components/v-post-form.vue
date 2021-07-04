@@ -1,7 +1,7 @@
 <template>
   <form>
     <p>Создание поста</p>
-    <input
+    <v-input
       v-model="post.title"
       class="input"
       type="text"
@@ -9,7 +9,7 @@
       name=""
       id=""
     />
-    <input
+    <v-input
       v-model="post.body"
       class="input"
       type="text"
@@ -17,11 +17,12 @@
       name=""
       id=""
     />
-    <button class="btn" @click.prevent="createPost">Создать</button>
+    <v-button style="margin-top: 15px;" @click.prevent="createPost">Создать</v-button>
   </form>
 </template>
 
 <script>
+
 export default {
   name: "v-post-form",
   data() {
@@ -41,6 +42,9 @@ export default {
         body: "",
       };
     },
+    deletePost() {
+      
+    }
   },
 };
 </script>
@@ -50,17 +54,6 @@ form {
   display: flex;
   flex-direction: column;
 }
-.input {
-  width: 100%;
-  border: 1px solid teal;
-  padding: 10px;
-  margin-top: 15px;
-}
-.btn {
-  margin-top: 15px;
-  padding: 10px;
-  background: none;
-  border: 1px solid teal;
-  cursor: pointer;
-}
+
+
 </style>
